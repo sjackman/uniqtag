@@ -2,7 +2,7 @@
 # Determine a unique substring (k-mer) of each string
 # Copyright 2014 Shaun Jackman
 
-k=7
+require 'optparse'
 
 class String
   # Iterate over each k-mer
@@ -42,6 +42,19 @@ def get_tag seq, kmer_counts, k
     [kmer_counts[kmer], kmer]
   }.min[1]
 end
+
+# Parse command line options
+k = 7
+OptionParser.new do |opts|
+  opts.banner = "Usage: uniqtag [-k N] [FILE]..."
+  opts.version = "0.1.0"
+  opts.release = nil
+
+  opts.on("-k", "--kmer N", OptionParser::DecimalInteger,
+      "Size of the unique tag (default 7)") do |n|
+    k = n
+  end
+end.parse!
 
 # Read strings and write unique tags
 seqs = ARGF.each_line.reject { |s|

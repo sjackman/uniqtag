@@ -44,6 +44,10 @@ def get_tag seq, kmer_counts, k
 end
 
 # Read strings and write unique tags
-seqs = ARGF.each_line.map{ |s| s.chomp.upcase }.to_a
+seqs = ARGF.each_line.reject { |s|
+  s =~ /^>/
+}.map { |s|
+  s.chomp.upcase
+}
 kmer_counts = count_kmer seqs, k
 puts seqs.map { |seq| get_tag(seq, kmer_counts, k) }.dedup

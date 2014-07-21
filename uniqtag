@@ -9,7 +9,8 @@ class String
   def each_kmer k
     return enum_for(:each_kmer, k) unless block_given?
     (0 .. length - k).each { |i|
-      yield self[i, k]
+      kmer = self[i, k]
+      yield kmer unless kmer =~ /~/
     }
   end
 end
@@ -37,10 +38,10 @@ end
 
 # Return the unique tag of the specified string
 def get_tag seq, kmer_counts, k
-  return seq if seq.length < k
-  seq.each_kmer(k).map { |kmer|
+  _, tag = seq.each_kmer(k).map { |kmer|
     [kmer_counts[kmer], kmer]
-  }.min[1]
+  }.min
+  tag || seq.split('~').min
 end
 
 # Parse command line options

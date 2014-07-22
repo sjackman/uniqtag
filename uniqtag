@@ -16,13 +16,10 @@ class String
 end
 
 class Array
-  # Add a unique suffix to duplicate strings
+  # Append a serial number to distinguish duplicate strings
   def dedup
-    counts = each_with_object(Hash.new(0)) { |x, memo|
-      memo[x] += 1
-    }
-    each_with_object(Hash.new(0)).map { |x, dups|
-      x + ("-#{dups[x] += 1}" if counts[x] > 1).to_s
+    each_with_object(Hash.new(0)).map { |x, count|
+      "#{x}-#{count[x] += 1}"
     }
   end
 end

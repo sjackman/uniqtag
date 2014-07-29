@@ -42,14 +42,14 @@ def get_tag seq, kmer_counts, k
 end
 
 # Parse command line options
-k = 7
+k = 9
 OptionParser.new do |opts|
   opts.banner = "Usage: uniqtag [-k N] [FILE]..."
   opts.version = "0.1.0"
   opts.release = nil
 
   opts.on("-k", "--kmer N", OptionParser::DecimalInteger,
-      "Size of the unique tag (default 7)") do |n|
+      "Size of the unique tag (default 9)") do |n|
     k = n
   end
 end.parse!

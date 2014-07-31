@@ -10,8 +10,8 @@ If multiple unique substrings exist, the lexicographically smallest
 substring is used. This lexicographically smallest substring of size
 *k* is called the uniqtag of that string.
 
-Publication
-===========
+Manuscript
+==========
 
 [Shaun D. Jackman, Joerg Bohlmann, İnanç Birol (2014)][uniqtag-paper]
 UniqTag: Content-derived unique and stable identifiers for gene annotation

@@ -14,7 +14,8 @@ Manuscript
 ==========
 
 [Shaun D. Jackman, Joerg Bohlmann, İnanç Birol (2014)][uniqtag-paper]
-UniqTag: Content-derived unique and stable identifiers for gene annotation
+UniqTag: Content-derived unique and stable identifiers for gene annotation.
+*bioRxiv*, [doi:10.1101/007583](http://dx.doi.org/10.1101/007583).
 
 [uniqtag-paper]: https://github.com/sjackman/uniqtag-paper
 

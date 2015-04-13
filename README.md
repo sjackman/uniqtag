@@ -10,6 +10,34 @@ If multiple unique substrings exist, the lexicographically smallest
 substring is used. This lexicographically smallest substring of size
 *k* is called the uniqtag of that string.
 
+Installation
+================================================================================
+
+Command line program
+------------------------------------------------------------
+
+```sh
+curl -o ~/bin/uniqtag https://raw.githubusercontent.com/sjackman/uniqtag/master/uniqtag
+chmod +x ~/bin/uniqtag
+```
+
+or using [Homebrew][] or [Linuxbrew][]
+
+```sh
+brew install uniqtag
+```
+
+[Homebrew]: http://brew.sh/
+[Linuxbrew]: http://brew.sh/linuxbrew/
+
+R package
+------------------------------------------------------------
+
+```r
+# install.packages("devtools")
+devtools::install_github("sjackman/uniqtag")
+```
+
 Manuscript
 ==========
 

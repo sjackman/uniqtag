@@ -1,0 +1,10 @@
+Package: uniqtag
+Type: Package
+Version: 1.0
+Title: Abbreviate Strings to Short, Unique Identifiers
+Description: For each string in a set of strings, determine a unique tag that is a substring of fixed size k unique to that string, if it has one. If no such unique substring exists, the least frequent substring is used. If multiple unique substrings exist, the lexicographically smallest substring is used. This lexicographically smallest substring of size k is called the "UniqTag" of that string.
+Authors@R: person("Shaun", "Jackman", , "sjackman@gmail.com", c("cre"))
+URL: https://github.com/sjackman/uniqtag
+BugReports: https://github.com/sjackman/uniqtag/issues
+Suggests: testthat
+License: MIT + file LICENSE

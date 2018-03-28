@@ -45,7 +45,7 @@ end
 k = 9
 OptionParser.new do |opts|
   opts.banner = "Usage: uniqtag [-k N] [FILE]..."
-  opts.version = "0.1.0"
+  opts.version = "1.0.0"
   opts.release = nil
 
   opts.on("-k", "--kmer N", OptionParser::DecimalInteger,

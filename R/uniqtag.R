@@ -55,10 +55,10 @@ cumcount <- function(xs) {
 
 #' Make character strings unique.
 #'
-#' Apppend sequence numbers to duplicate elements to make all elements of a character vector unique.
+#' Append sequence numbers to duplicate elements to make all elements of a character vector unique.
 #' @param xs a character vector
 #' @param sep a character string used to separate a duplicate string from its sequence number
-#' @describeIn make_unique Append a sequence number to duplicated elements, including the first occurence.
+#' @describeIn make_unique Append a sequence number to duplicated elements, including the first occurrence.
 #' @seealso make.unique
 #' @examples
 #' abcb <- c("a", "b", "c", "b")
@@ -76,7 +76,7 @@ make_unique <- function(xs, sep = "-") {
     xs
 }
 
-#' @describeIn make_unique Append a sequence number to duplicated elements, except the first occurence.
+#' @describeIn make_unique Append a sequence number to duplicated elements, except the first occurrence.
 #'
 #' This function behaves similarly to make.unique
 #' @export

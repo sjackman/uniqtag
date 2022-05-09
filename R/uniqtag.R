@@ -42,11 +42,10 @@ vkmers_of <- function(xs, k) {
 #' @return an integer vector of the cumulative string counts
 #' @examples
 #' cumcount(abbreviate(state.name, 3, strict = TRUE))
-#' @importFrom stats setNames
 #' @export
 cumcount <- function(xs) {
     counts <- new.env(parent = emptyenv())
-    setNames(vapply(
+    stats::setNames(vapply(
         xs, function(x) {
             counts[[x]] <- 1L + mget(x, counts, ifnotfound = 0L)[[1]]
         },
@@ -131,7 +130,6 @@ make_unique_all_or_none <- function(xs, sep = "-") {
 #' @param sep a character string used to separate a duplicate string from its sequence number
 #' @return a character vector of the UniqTags of the strings \code{x}
 #' @seealso abbreviate, locales, make.unique
-#' @importFrom stats setNames
 #' @export
 uniqtag <- function(xs, k = 9, uniq = make_unique_all_or_none, sep = "-") {
     if (is.null(uniq)) {
@@ -139,7 +137,7 @@ uniqtag <- function(xs, k = 9, uniq = make_unique_all_or_none, sep = "-") {
         sep <- NA
     }
     counts <- table(unlist(lapply(vkmers_of(xs, k), unique)))
-    counts_kmers <- setNames(
+    counts_kmers <- stats::setNames(
         paste0(format(counts, justify = "right"), names(counts)),
         names(counts)
     )

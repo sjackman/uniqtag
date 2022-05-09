@@ -21,31 +21,33 @@ curl -o ~/bin/uniqtag https://raw.githubusercontent.com/sjackman/uniqtag/master/
 chmod +x ~/bin/uniqtag
 ```
 
-or using [Homebrew][] or [Linuxbrew][]
+or using [Homebrew][] on macOS or Linux
 
 ```sh
 brew install uniqtag
 ```
 
 [Homebrew]: http://brew.sh/
-[Linuxbrew]: http://brew.sh/linuxbrew/
 
 R package
 ------------------------------------------------------------
 
 ```r
+install.packages("uniqtag")
 # install.packages("devtools")
 devtools::install_github("sjackman/uniqtag")
 ```
 
-Manuscript
-==========
+Publication
+================================================================================
 
-[Shaun D. Jackman, Joerg Bohlmann, İnanç Birol (2014)][uniqtag-paper]
-UniqTag: Content-derived unique and stable identifiers for gene annotation.
-*bioRxiv*, [doi:10.1101/007583](http://dx.doi.org/10.1101/007583).
-
-[uniqtag-paper]: https://github.com/sjackman/uniqtag-paper
+- Shaun D. Jackman, Joerg Bohlmann, İnanç Birol (2015)
+  UniqTag: Content-derived unique and stable identifiers for gene annotation.
+  *PLOS ONE*, [doi:10.1371/journal.pone.0128026](https://doi.org/10.1371/journal.pone.0128026).
+- Shaun D. Jackman, Joerg Bohlmann, İnanç Birol (2014)
+  UniqTag: Content-derived unique and stable identifiers for gene annotation.
+  *bioRxiv*, [doi:10.1101/007583](https://doi.org/10.1101/007583).
+- https://github.com/sjackman/uniqtag-paper
 
 Summary
 =======

@@ -19,16 +19,21 @@ NULL
 #' @param x a character string
 #' @return kmers_of: a character vector of the k-mers of \code{x}
 #' @export
-kmers_of <- function(x, k)
-	if (nchar(x) < k) x else
-		substring(x, 1:(nchar(x) - k + 1), k:nchar(x))
+kmers_of <- function(x, k) {
+    if (nchar(x) < k) {
+        x
+    } else {
+        substring(x, 1:(nchar(x) - k + 1), k:nchar(x))
+    }
+}
 
 #' @describeIn kmers_of Return the k-mers of the strings \code{xs}.
 #' @param xs a character vector
 #' @return vkmers_of: a list of character vectors of the k-mers of \code{xs}
 #' @export
-vkmers_of <- function(xs, k)
-	Vectorize(kmers_of, SIMPLIFY = FALSE)(xs, k)
+vkmers_of <- function(xs, k) {
+    Vectorize(kmers_of, SIMPLIFY = FALSE)(xs, k)
+}
 
 #' Cumulative count of strings.
 #'
@@ -40,10 +45,13 @@ vkmers_of <- function(xs, k)
 #' @importFrom stats setNames
 #' @export
 cumcount <- function(xs) {
-	counts <- new.env(parent = emptyenv())
-	setNames(vapply(xs, function(x)
-		counts[[x]] <- 1L + mget(x, counts, ifnotfound = 0L)[[1]],
-		integer(1)), xs)
+    counts <- new.env(parent = emptyenv())
+    setNames(vapply(
+        xs, function(x) {
+            counts[[x]] <- 1L + mget(x, counts, ifnotfound = 0L)[[1]]
+        },
+        integer(1)
+    ), xs)
 }
 
 #' Make character strings unique.
@@ -63,27 +71,27 @@ cumcount <- function(xs) {
 #' x <- make_unique(abbreviate(state.name, 3, strict = TRUE))
 #' x[grep("-", x)]
 #' @export
-make_unique <- function(xs, sep = '-') {
-	i <- xs %in% xs[duplicated(xs)]
-	xs[i] <- make_unique_all(xs[i], sep)
-	xs
+make_unique <- function(xs, sep = "-") {
+    i <- xs %in% xs[duplicated(xs)]
+    xs[i] <- make_unique_all(xs[i], sep)
+    xs
 }
 
 #' @describeIn make_unique Append a sequence number to duplicated elements, except the first occurence.
 #'
 #' This function behaves similarly to make.unique
 #' @export
-make_unique_duplicates <- function(xs, sep = '-') {
-	i <- duplicated(xs)
-	xs[i] <- make_unique_all(xs[i], sep)
-	xs
+make_unique_duplicates <- function(xs, sep = "-") {
+    i <- duplicated(xs)
+    xs[i] <- make_unique_all(xs[i], sep)
+    xs
 }
 
 #' @describeIn make_unique Append a sequence number to every element.
 #' @export
 make_unique_all <- function(xs, sep = "-") {
-	xs[] <- paste(xs, cumcount(xs), sep = sep)
-	xs
+    xs[] <- paste(xs, cumcount(xs), sep = sep)
+    xs
 }
 
 #' @describeIn make_unique Append a sequence number to every element or no elements.
@@ -91,8 +99,9 @@ make_unique_all <- function(xs, sep = "-") {
 #' Return \code{xs} unchanged if the elements of the character vector \code{xs} are already unique.
 #' Otherwise append a sequence number to every element.
 #' @export
-make_unique_all_or_none <- function(xs, sep = '-')
-	if (anyDuplicated(xs)) make_unique_all(xs, sep) else xs
+make_unique_all_or_none <- function(xs, sep = "-") {
+    if (anyDuplicated(xs)) make_unique_all(xs, sep) else xs
+}
 
 #' Abbreviate strings to short, unique identifiers.
 #'
@@ -124,17 +133,21 @@ make_unique_all_or_none <- function(xs, sep = '-')
 #' @seealso abbreviate, locales, make.unique
 #' @importFrom stats setNames
 #' @export
-uniqtag <- function(xs, k = 9, uniq = make_unique_all_or_none, sep = '-') {
-	if (is.null(uniq)) {
-		uniq <- identity
-		sep <- NA
-	}
-	counts <- table(unlist(lapply(vkmers_of(xs, k), unique)))
-	counts_kmers <- setNames(
-		paste0(format(counts, justify = "right"), names(counts)),
-		names(counts))
-	tags <- vapply(xs, function(x)
-		names(counts_kmers)[match(min(counts_kmers[kmers_of(x, k)]), counts_kmers)],
-		character(1))
-	if (is.na(sep)) uniq(tags) else uniq(tags, sep)
+uniqtag <- function(xs, k = 9, uniq = make_unique_all_or_none, sep = "-") {
+    if (is.null(uniq)) {
+        uniq <- identity
+        sep <- NA
+    }
+    counts <- table(unlist(lapply(vkmers_of(xs, k), unique)))
+    counts_kmers <- setNames(
+        paste0(format(counts, justify = "right"), names(counts)),
+        names(counts)
+    )
+    tags <- vapply(
+        xs, function(x) {
+            names(counts_kmers)[match(min(counts_kmers[kmers_of(x, k)]), counts_kmers)]
+        },
+        character(1)
+    )
+    if (is.na(sep)) uniq(tags) else uniq(tags, sep)
 }

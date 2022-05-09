@@ -1,4 +1,10 @@
 #' Abbreviate strings to short, unique identifiers.
+#'
+#' For each string in a set of strings, determine a unique tag that is a substring of fixed size k
+#' unique to that string, if it has one. If no such unique substring exists, the least frequent
+#' substring is used. If multiple unique substrings exist, the lexicographically smallest substring
+#' is used. This lexicographically smallest substring of size k is called the "UniqTag" of that
+#' string.
 #' @docType package
 #' @name uniqtag-package
 #' @author Shaun Jackman \email{sjackman@@gmail.com}
@@ -31,6 +37,7 @@ vkmers_of <- function(xs, k)
 #' @return an integer vector of the cumulative string counts
 #' @examples
 #' cumcount(abbreviate(state.name, 3, strict = TRUE))
+#' @importFrom stats setNames
 #' @export
 cumcount <- function(xs) {
 	counts <- new.env(parent = emptyenv())
@@ -115,6 +122,7 @@ make_unique_all_or_none <- function(xs, sep = '-')
 #' @param sep a character string used to separate a duplicate string from its sequence number
 #' @return a character vector of the UniqTags of the strings \code{x}
 #' @seealso abbreviate, locales, make.unique
+#' @importFrom stats setNames
 #' @export
 uniqtag <- function(xs, k = 9, uniq = make_unique_all_or_none, sep = '-') {
 	if (is.null(uniq)) {

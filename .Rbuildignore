@@ -3,3 +3,4 @@ tar\.gz$
 ^uniqtag$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^CRAN-SUBMISSION$

@@ -21,20 +21,25 @@ curl -o ~/bin/uniqtag https://raw.githubusercontent.com/sjackman/uniqtag/master/
 chmod +x ~/bin/uniqtag
 ```
 
-or using [Homebrew][] on macOS or Linux
+or using [Homebrew](https://brew.sh/) on macOS or Linux
 
 ```sh
 brew install uniqtag
 ```
 
-[Homebrew]: http://brew.sh/
-
 R package
 ------------------------------------------------------------
 
+Install from CRAN
+
 ```r
 install.packages("uniqtag")
-# install.packages("devtools")
+```
+
+or from GitHub
+
+```
+install.packages("devtools")
 devtools::install_github("sjackman/uniqtag")
 ```
 

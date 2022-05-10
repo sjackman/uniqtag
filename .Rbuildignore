@@ -4,3 +4,4 @@ tar\.gz$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^CRAN-SUBMISSION$
+^LICENSE\.md$
